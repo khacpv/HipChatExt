@@ -32,7 +32,4 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'io.reactivex:rxandroid:0.25.0'
-
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:1.9.5"
 }
