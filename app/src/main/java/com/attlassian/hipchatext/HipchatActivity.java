@@ -12,8 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.attlassian.hipchatext.adapters.ParserItemAdapter;
+import com.attlassian.hipchatext.common.network.NetworkUtils;
 import com.attlassian.hipchatext.common.network.WebLoader;
 import com.attlassian.hipchatext.common.parser.ChatParserMng;
+import com.attlassian.hipchatext.config.Constant;
 import com.attlassian.hipchatext.models.ChatItem;
 import com.attlassian.hipchatext.models.Link;
 import com.attlassian.hipchatext.views.ChatInputView;
@@ -33,18 +35,12 @@ import rx.schedulers.Schedulers;
  */
 public class HipChatActivity extends AppCompatActivity {
 
-    //================= CONSTANTS ======================
-
-    /**
-     * duration for dismiss delete notification.
-     */
-    private final int PERMANENT_DEL_DURATION = 1500;
-
     //================= VIEWS ======================
 
     /**
      * toolbar to display title app
      */
+    @Bind(R.id.app_toolbar)
     protected Toolbar mToolbar;
 
     /**
@@ -76,7 +72,7 @@ public class HipChatActivity extends AppCompatActivity {
     /**
      * handle click 'unDelete' chats list.
      */
-    private View.OnClickListener mUndoDeleteItems;
+    private View.OnClickListener mUndoDeleteListener;
 
     /**
      * handle click clear chats list.
@@ -110,8 +106,6 @@ public class HipChatActivity extends AppCompatActivity {
 
     /**
      * Runnable to permanent clean data after #PERMANENT_DEL_DURATION seconds.
-     *
-     * @see #PERMANENT_DEL_DURATION
      */
     private Runnable mPermanentCleanRunnable;
 
@@ -124,11 +118,12 @@ public class HipChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_hipchat);
 
-        setupActionBar();
-
         ButterKnife.bind(this);
+
+        setupActionBar();
 
         setupView();
 
@@ -145,6 +140,15 @@ public class HipChatActivity extends AppCompatActivity {
 
         mActionButton.setOnClickListener(mActionButtonListener);
         mChatFormInput.setOnViewChatListener(mViewChatListener);
+
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        checkNetworkConnection();
     }
 
     /**
@@ -152,7 +156,6 @@ public class HipChatActivity extends AppCompatActivity {
      */
     private void setupActionBar() {
 
-        mToolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(mToolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -165,6 +168,7 @@ public class HipChatActivity extends AppCompatActivity {
      * init views.
      */
     private void setupView() {
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mContentLayout.setLayoutManager(linearLayoutManager);
     }
@@ -174,7 +178,7 @@ public class HipChatActivity extends AppCompatActivity {
      */
     private void setupActionListener() {
 
-        mUndoDeleteItems = new View.OnClickListener() {
+        mUndoDeleteListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -196,9 +200,9 @@ public class HipChatActivity extends AppCompatActivity {
                 mParserItems.clear();
                 mParserItemAdapter.notifyDataSetChanged(false);
 
-                Snackbar.make(mSnackPositionLayout, R.string.message_clean, Snackbar.LENGTH_LONG).setAction(R.string.message_undo, mUndoDeleteItems).setDuration(PERMANENT_DEL_DURATION).show();
+                Snackbar.make(mSnackPositionLayout, R.string.message_clean, Snackbar.LENGTH_LONG).setAction(R.string.message_undo, mUndoDeleteListener).setDuration(Constant.Alert.PERMANENT_DEL_DURATION).show();
                 mHandler.removeCallbacks(mPermanentCleanRunnable);
-                mHandler.postDelayed(mPermanentCleanRunnable, PERMANENT_DEL_DURATION << 1);
+                mHandler.postDelayed(mPermanentCleanRunnable, Constant.Alert.PERMANENT_DEL_DURATION << 1);
             }
         };
 
@@ -265,5 +269,14 @@ public class HipChatActivity extends AppCompatActivity {
                 mCachedParserItems.clear();
             }
         };
+    }
+
+    /**
+     * show alert if disconnected.
+     * */
+    private void checkNetworkConnection(){
+        if(!NetworkUtils.isConnectedNetwork(this)){
+            Snackbar.make(mSnackPositionLayout, R.string.message_noconnection, Snackbar.LENGTH_LONG).setDuration(Constant.Alert.DISCONNECT_DURATION).show();
+        }
     }
 }

@@ -17,6 +17,15 @@ public class MentionParserTest extends TestCase {
         mMentionParser = new MentionParser();
     }
 
+    public void testLinkParserNotNull(){
+        // Given
+
+        // When
+
+        // Then
+        assertNotNull(mMentionParser);
+    }
+
     public void testMentionParserHasMention() {
         String input = "hello @myFriend, you are very handsome";
         List<String> output = mMentionParser.parse(input);
@@ -29,5 +38,11 @@ public class MentionParserTest extends TestCase {
         List<String> output = mMentionParser.parse(input);
 
         assertEquals(true, output.isEmpty());
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        mMentionParser = null;
     }
 }

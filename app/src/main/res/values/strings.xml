@@ -4,6 +4,7 @@
     <string name="message.undo">Undo</string>
     <string name="message.send">Send</string>
     <string name="message.clean">Cleaned data</string>
+    <string name="message.noconnection">Hey, you\'re not connected. \nCould you please give me some internet.</string>
     <string name="message.chathint">Ex: Olympics are starting&#8230;</string>
 
     <string-array name="suggestion">

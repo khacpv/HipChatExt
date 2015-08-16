@@ -21,9 +21,14 @@ class MentionParser {
      * @return List mentions
      * */
     public List<String> parse(String input){
+        List<String> result = new ArrayList<>();
+
+        if(null == input){
+            return result;
+        }
+
         Pattern pattern = Pattern.compile(STR_PATTERN);
         Matcher matcher = pattern.matcher(input);
-        List<String> result = new ArrayList<>();
 
         while(matcher.find()) {
             String mention = matcher.group().trim().replaceAll("@","");

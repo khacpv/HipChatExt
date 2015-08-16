@@ -18,10 +18,20 @@ public class EmoticonParserTest extends TestCase {
     }
 
     public void testChatParserHasEmoticon() {
+        // Given
         String input = "Good morning! (megusta) (coffee)";
+
+        // When
         List<String> output = mEmoticonParser.parse(input);
 
+        // Then
         assertEquals("megusta",output.get(0));
         assertEquals("coffee", output.get(1));
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        mEmoticonParser = null;
     }
 }

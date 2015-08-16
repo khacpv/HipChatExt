@@ -18,10 +18,8 @@ import java.util.List;
  */
 public class ParserItemAdapter extends RecyclerView.Adapter<ParserItemAdapter.ChatItemHolder> {
 
-    /**
-     * List ParserItem for
-     */
     private List<ChatItem> mParserItems;
+
     private boolean isAnimate = true;
 
     public ParserItemAdapter(List<ChatItem> items) {

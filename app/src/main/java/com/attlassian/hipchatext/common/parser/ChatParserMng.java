@@ -15,13 +15,15 @@ public class ChatParserMng {
     private static ChatParserMng mInstance;
 
     private EmoticonParser mEmoticonParser;
+
     private LinkParser mLinkParser;
-    private MentionParser mMentionarser;
+
+    private MentionParser mMentionParser;
 
     private ChatParserMng(){
         mEmoticonParser = new EmoticonParser();
         mLinkParser = new LinkParser();
-        mMentionarser = new MentionParser();
+        mMentionParser = new MentionParser();
     }
 
     /**
@@ -46,7 +48,7 @@ public class ChatParserMng {
         item.setInput(input);
 
         ChatInfo chatData = new ChatInfo();
-        chatData.setMentions(mMentionarser.parse(input));
+        chatData.setMentions(mMentionParser.parse(input));
         chatData.setEmoticons(mEmoticonParser.parse(input));
         chatData.setLinks(mLinkParser.parse(input));
         item.setChatInfo(chatData);

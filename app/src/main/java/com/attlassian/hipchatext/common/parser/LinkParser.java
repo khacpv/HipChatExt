@@ -24,9 +24,14 @@ class LinkParser {
      * @return List of {@link com.attlassian.hipchatext.models.Link} object.
      * */
     public List<Link> parse(String input){
+        List<Link> result = new ArrayList<>();
+
+        if(null == input){
+            return result;
+        }
+
         Pattern pattern = Pattern.compile(STR_PATTERN);
         Matcher matcher = pattern.matcher(input);
-        List<Link> result = new ArrayList<>();
 
         while(matcher.find()) {
             Link link = new Link();
