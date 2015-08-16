@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Hipchat">
+
+    </style>
+
+    <style name="Hipchat.Toolbar">
+
+    </style>
+
+    <style name="Hipchat.ChatView">
+
+    </style>
+
+    <style name="Hipchat.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+    </style>
+</resources>

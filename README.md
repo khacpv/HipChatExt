@@ -1,2 +1,2 @@
 # HipChatExt
-This project purposes for testing only.
+This project purposes for parse from input sentence to mention, emoticon, links
