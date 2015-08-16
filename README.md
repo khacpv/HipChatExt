@@ -1,15 +1,15 @@
 # HipChatExt
 
-Automatic detect data from any Chat Text (Mention, Link, Emoticon)
+Automatic detect meta data from any Chat Text (Mention, Link, Emoticon)
 
-Install:
+## Install:
 
-- Use SourceTree to clone project to local or run 'git clone https://github.com/khacpv/HipChatExt.git'
+- Use SourceTree to clone project to local or run 'git clone [https://github.com/khacpv/HipChatExt.git](https://github.com/khacpv/HipChatExt.git)'
 
 - Import to Android studio and run.
 
 
-How to use:
+## How to use:
 
 - Input some text into EditText (ex: 'h' letter)
 
@@ -17,8 +17,9 @@ How to use:
 
 - Hit 'Send' button to see result. (maybe wait a seconds to see title load)
 
+- Run UnitTest (11 testCases)
 
-Features:
+## Features:
 
 - Input any text
 
@@ -26,7 +27,7 @@ Features:
 
 - Load title if in content has links (multi support)
 
-Pluggable features:
+## Pluggable features:
 
 - Cached title with url
 
@@ -34,11 +35,11 @@ Pluggable features:
 
 - Clean history text
 
-Documents:
+## Documents
 
-- Open [docs/index.html] via your browser.
+- Open [docs/index.html](https://github.com/khacpv/HipChatExt/blob/develop/docs/index.html) via your browser.
 
-Libraries:
+## Libraries:
 
 - AppCompat V7: android support library.
 
@@ -50,14 +51,14 @@ Libraries:
 
 - Gson: very famous library
 
-- ButterKnife: an use full library allows annotation to inflate views
+- **ButterKnife**: an use full library allows annotation to inflate views
 
-- RxAndroid: modern library. Effective, performance to handle Concurrent threads.
+- **RxAndroid**: modern library. Effective, performance to handle Concurrent threads.
 
-License and Condition
+## License and Condition
 
-- Feel free to use this project without constraints.
+- Under [Atlassian licenses](https://www.atlassian.com/licensing/jira).
 
-Credit:
+## Credit:
 
 - Pham Khac - [khacpv@gmail.com](khacpv@gmail.com) -
