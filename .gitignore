@@ -25,3 +25,9 @@ proguard/
 
 # Log Files
 *.log
+
+# Common files
+.DS_Store
+.idea
+*.iml
+*.properties

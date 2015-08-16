@@ -1,0 +1,17 @@
+<resources>
+    <string name="app.name">Hip Chat Ext</string>
+
+    <string name="message.undo">Undo</string>
+    <string name="message.send">Send</string>
+    <string name="message.clean">Cleaned data</string>
+    <string name="message.noconnection">Hey, you\'re not connected. \nCould you please give me some internet.</string>
+    <string name="message.chathint">Ex: Olympics are starting&#8230;</string>
+
+    <string-array name="suggestion">
+        <item>\@chris you around?</item>
+        <item>Good morning! (megusta) (coffee)</item>
+        <item>Olympics are starting soon; http://www.nbcolympics.com</item>
+        <item>Olympics should happen in Vietnam http://vietnam.com</item>
+        <item>\@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016</item>
+    </string-array>
+</resources>
